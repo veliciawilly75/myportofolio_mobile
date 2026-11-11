@@ -16,8 +16,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // This is the theme of your application.
         colorScheme: .fromSeed(
-          seedColor: Colors.deepPurple,
-          secondary: Colors.amber[700],
+          brightness: Brightness.light,
+          seedColor: Color(0xFF285E8E),        // Rich True Navy
+          
+          primary: Color(0xFF285E8E),          // Rich True Navy
+          secondary: Color(0xFF4A84BA),        // Lively Mid-Blue
+          
+          surface: Color(0xFFFAFCFD),          // Crisp White
+          surfaceContainer: Color(0xFFEEF3F8), // Soft Cool Gray
         ),
         useMaterial3: true,
       ),
