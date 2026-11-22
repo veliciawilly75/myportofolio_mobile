@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget {
   final List<ItemHomepage> items = [
     ItemHomepage("Lihat Proyek", Icons.folder, Color(0xFF4A84BA)),
     ItemHomepage("Tambah Proyek", Icons.add_circle, Color(0xFF2F855A)),
+    ItemHomepage("Add Experience", Icons.add_circle, Color(0xFF2F855A)),
     ItemHomepage("Logout", Icons.logout, Color(0xFFD97777)),
   ];
 
@@ -71,7 +72,7 @@ class MyHomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    crossAxisCount: 3,
+                    crossAxisCount: 4,
                     // shrinkWrap agar ukuran kisi menyesuaikan tinggi konten anak.
                     shrinkWrap: true,
                     children: items.map((ItemHomepage item) {
