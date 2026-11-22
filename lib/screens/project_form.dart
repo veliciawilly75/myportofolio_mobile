@@ -49,8 +49,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Nama Proyek",
-                    labelText: "Nama Proyek",
+                    hintText: "Project Name",
+                    labelText: "Project Name",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -62,7 +62,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Nama proyek tidak boleh kosong!";
+                      return "Project name cannot be empty!";
                     }
                     return null;
                   },
@@ -75,8 +75,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                 child: TextFormField(
                   maxLines: 5,
                   decoration: InputDecoration(
-                    hintText: "Deskripsi Proyek",
-                    labelText: "Deskripsi Proyek",
+                    hintText: "Project Description",
+                    labelText: "Project Description",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -88,7 +88,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.trim().isEmpty) {
-                      return "Deskripsi proyek tidak boleh kosong!";
+                      return "Project description cannot be empty!";
                     }
                     return null;
                   },
@@ -100,7 +100,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: DropdownButtonFormField<String>(
                   decoration: InputDecoration(
-                    labelText: "Kategori Proyek",
+                    labelText: "Project Category",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -125,8 +125,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "Contoh: Flutter, Django, Figma",
-                    labelText: "Teknologi yang Digunakan",
+                    hintText: "Example: Flutter, Django, Figma",
+                    labelText: "Tech Stack",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -144,8 +144,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    hintText: "URL Proyek (opsional)",
-                    labelText: "Tautan Proyek",
+                    hintText: "Project URL (optional)",
+                    labelText: "Project link",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -174,16 +174,16 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Proyek berhasil ditambahkan!'),
+                              title: const Text('Project successfully added!'),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Nama Proyek: $_projectName'),
-                                    Text('Deskripsi: $_description'),
-                                    Text('Kategori: $_category'),
-                                    Text('Teknologi: $_technologies'),
-                                    Text('Tautan: $_projectLink'),
+                                    Text('Project name: $_projectName'),
+                                    Text('Description: $_description'),
+                                    Text('Category: $_category'),
+                                    Text('Tech stack: $_technologies'),
+                                    Text('Link: $_projectLink'),
                                   ],
                                 ),
                               ),

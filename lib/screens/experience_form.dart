@@ -215,7 +215,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Proyek berhasil ditambahkan!'),
+                              title: const Text('Experience successfully added!'),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
