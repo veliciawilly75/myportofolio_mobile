@@ -70,8 +70,8 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
             'Add Experience Form',
           ),
         ),
-        backgroundColor: Colors.indigo,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.surface,
       ),
       drawer: LeftDrawer(),
       body: Form(
