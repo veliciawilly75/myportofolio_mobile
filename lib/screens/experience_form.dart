@@ -30,9 +30,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   Future<void> _selectStartDate() async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime(2021, 7, 25),
-      firstDate: DateTime(2021),
-      lastDate: DateTime(2022),
+      initialDate: DateTime(now.year, now.month, now.day),
+      firstDate: DateTime(now.year-5),
+      lastDate: DateTime(now.year+5),
     );
 
     setState(() {
@@ -45,9 +45,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   Future<void> _selectEndDate() async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: DateTime(2021, 7, 25),
-      firstDate: DateTime(2021),
-      lastDate: DateTime(2022),
+      initialDate: DateTime(now.year, now.month, now.day),
+      firstDate: DateTime(now.year-5),
+      lastDate: DateTime(now.year+5),
     );
 
     setState(() {
@@ -167,6 +167,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       _startedAt == null 
@@ -185,6 +186,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       _endedAt == null 
