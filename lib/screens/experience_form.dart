@@ -27,6 +27,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
     'Freelance',
   ];
 
+  // === Fungsi untuk date picker ===
   Future<void> _selectStartDate() async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -35,7 +36,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
       lastDate: DateTime(now.year+5),
     );
 
-    setState(() {
+    setState(() { // Validasi dan set nilai
       if (pickedDate != null) {
         _startedAt = pickedDate;
       }
@@ -50,7 +51,8 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
       lastDate: DateTime(now.year+5),
     );
 
-    setState(() {
+    setState(() { // Validasi dan set nilai
+      // Memastikan end date berada setelah start date
       if (pickedDate!.isAfter(_startedAt!)) {
         _endedAt = pickedDate;
       } else {
@@ -60,6 +62,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
       }
     });
   }
+  // ==================================
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +172,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
+                    Text( // Menampilkan instruksi pengisian atau tanggal yang dipilih
                       _startedAt == null 
                         ? 'Select start date'
                         : '${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
@@ -188,7 +191,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
+                    Text( // Menampilkan instruksi pengisian atau tanggal yang dipilih
                       _endedAt == null 
                         ? 'Select end date'
                         : '${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
@@ -226,6 +229,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                                     Text('Description: $_description'),
                                     Text('Category: $_category'),
                                     Text('Started at: ${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}'),
+                                    // Menampilkan teks 'Ongoing' apabila Experience belum memiliki tanggal akhir
                                     Text(_endedAt == null ? 'Ongoing' : 'Ended at : ${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}'),
                                   ],
                                 ),
