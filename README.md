@@ -8,6 +8,7 @@ Kelas : PBP D
 
 ## Hyperlinks
 1. [Tugas 7](#tugas-7)
+2. [Tugas 8](#tugas-8)
 
 
 ## Tugas 7
@@ -36,3 +37,23 @@ Berikut link percakapan saya dengan AI: https://gemini.google.com/share/d/1Z8cxu
 ### Resources
 1. Halaman Tutorial 8 PBP
 2. PPT 09 - Intro to Dart and Flutter
+
+## Tugas 8
+### Perubahan yang terjadi
+1. Menambahkan halaman form Experience.
+2. Menyatukan tema warna pada keseluruhan aplikasi.
+
+### Pertanyaan Reflektif
+1. Navigator.push() hanya meng-append suatu route ke stack route, sementara Navigator.pushReplacement() menghapus route teratas pada stack route dan menggantinya dengan route baru. Navigator.pop() menghapus route teratas pada stack route dan memindahkan user ke route yang berada di bawah route teratas pada stack route. Navigator.push() saya gunakan untuk membuka formulir pada kartu aksi karena ini memungkinkan pengguna untuk kembali ke halaman sebelumnya dengan menekan tombol back pada device. Untuk kembali ke Home, saya menggunakan Navigator.pushReplacement() untuk mencegah pengguna kembali ke halaman sebelumnya (halaman formulir misalnya).
+2. Scaffold mendefinisikan app bar (header) dan drawer dari suatu halaman. Jika setting theme app bar dan drawer yang digunakan pada keseluruhan aplikasi sama, struktur halaman pada keseluruhan aplikasi akan konsisten. Penggunaan warna tema portofolio saya ada di backgroundColor dan foregroundColor app bar masing-masing halaman dan pada drawer header.
+3. Untuk formulir, tinggi total widgets/fields bisa jadi melebihi tinggi layar pengguna. Oleh karena itu, kita perlu memungkinkan pengguna untuk melakukan scrolling ketika tinggi totalnya melebihi tinggi layar device agar widgets/fields di bawahnya tidak terpotong. Mekanisme scrolling ini diimplementasikan menggunakan widget SingleChildScrollView. Pada halaman forms, terlihat pula bahwa ada jarak di antara field satu dengan field lainnya. Hal ini diperlukan karena field yang saling berdempetan tidak terlihat bagus dan bahkan bisa menyulitkan pengguna ketika membaca dan mengisi form. Pengaturan jarak ini diimplementasikan dengan widget Padding dan mengisi atribut padding-nya dengan ukuran padding yang diinginkan.
+4. GlobalKey<FormState> digunakan untuk mengakses dan memvalidasi data yang dikumpulkan, serta mengelola state dari form. GlobalKey<FormState> merupakan key milik suatu form yang bisa digunakan untuk mengidentifikasinya. Validator adalah salah satu atribut dari FormField berupa fungsi yang digunakan untuk memastikan input pengguna sesuai ketentuan. Jika tidak sesuai ketentuan, validator akan mengembalikan pesan error dan menolak input pengguna. Fungsi validate() diterapkan kepada FormState milik key milik form. Fungsi ini akan menjalankan validator dari semua field pada form.
+
+### AI Disclosure
+Saya menggunakan Gemini AI untuk membantu saya mengimplementasikan date picker dan validator untuk date picker serta dropdown selection.
+
+Link chat saya dengan AI: https://gemini.google.com/share/d/1ghl9n1yLB3NMn04Wdn1LTbMheD4bB9hz?usp=sharing 
+
+### Resources
+1. Halaman Tutorial 9 PBP
+2. Dokumentasi Flutter (https://docs.flutter.dev/)
