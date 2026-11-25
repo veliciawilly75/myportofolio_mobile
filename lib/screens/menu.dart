@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 import 'package:myportofolio_mobile/widgets/project_card.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -13,22 +15,30 @@ class MyHomePage extends StatelessWidget {
     ItemHomepage("View Project", Icons.folder, Color(0xFF4A84BA)),
     ItemHomepage("Add Project", Icons.add_circle, Color(0xFF2F855A)),
     ItemHomepage("Add Experience", Icons.add_circle, Color(0xFF2F855A)),
-    ItemHomepage("Logout", Icons.logout, Color(0xFFD97777)),
   ];
 
   // This widget is the home page of your application. It is stateful, meaning
-    @override
+  @override
   Widget build(BuildContext context) {
     // Scaffold menyediakan struktur visual dasar halaman (AppBar, Body, SnackBar).
+    final loggedIn = context.watch<AuthState>().isLoggedIn;
+    if (loggedIn) {
+      if (items.length == 4) {
+        items.removeLast();
+      }
+      items.add(ItemHomepage("Logout", Icons.logout, Color(0xFFD97777)));
+    } else {
+      if (items.length == 4) {
+        items.removeLast();
+      }
+      items.add(ItemHomepage("Login", Icons.login, Color(0xFF4A84BA)));
+    }
     return Scaffold(
       // AppBar menampilkan bar bagian atas halaman aplikasi.
       appBar: AppBar(
         title: const Text(
           'MyPortfolio',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -108,10 +118,7 @@ class InfoCard extends StatelessWidget {
         // Menyusun teks title dan content secara vertikal.
         child: Column(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8.0),
             Text(content),
           ],

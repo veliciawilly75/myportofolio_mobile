@@ -11,7 +11,7 @@ class ExperienceFormPage extends StatefulWidget {
 class _ExperienceFormPageState extends State<ExperienceFormPage> {
   final _formKey = GlobalKey<FormState>();
   final now = DateTime.now();
-  
+
   String _experienceName = "";
   String _description = "";
   String _category = '';
@@ -32,11 +32,12 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime(now.year, now.month, now.day),
-      firstDate: DateTime(now.year-5),
-      lastDate: DateTime(now.year+5),
+      firstDate: DateTime(now.year - 5),
+      lastDate: DateTime(now.year + 5),
     );
 
-    setState(() { // Validasi dan set nilai
+    setState(() {
+      // Validasi dan set nilai
       if (pickedDate != null) {
         _startedAt = pickedDate;
       }
@@ -47,17 +48,18 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime(now.year, now.month, now.day),
-      firstDate: DateTime(now.year-5),
-      lastDate: DateTime(now.year+5),
+      firstDate: DateTime(now.year - 5),
+      lastDate: DateTime(now.year + 5),
     );
 
-    setState(() { // Validasi dan set nilai
+    setState(() {
+      // Validasi dan set nilai
       // Memastikan end date berada setelah start date
       if (pickedDate!.isAfter(_startedAt!)) {
         _endedAt = pickedDate;
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("End date has to be after Start date!"))
+          SnackBar(content: Text("End date has to be after Start date!")),
         );
       }
     });
@@ -68,11 +70,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Add Experience Form',
-          ),
-        ),
+        title: const Center(child: Text('Add Experience Form')),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.surface,
       ),
@@ -107,7 +105,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   },
                 ),
               ),
-              
+
               // === Description ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -145,12 +143,16 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  initialValue: _categories.contains(_category) ? _category : null,
+                  initialValue: _categories.contains(_category)
+                      ? _category
+                      : null,
                   items: _categories
-                      .map((category) => DropdownMenuItem<String>(
-                            value: category,
-                            child: Text(category),
-                          ))
+                      .map(
+                        (category) => DropdownMenuItem<String>(
+                          value: category,
+                          child: Text(category),
+                        ),
+                      )
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -172,13 +174,14 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text( // Menampilkan instruksi pengisian atau tanggal yang dipilih
-                      _startedAt == null 
-                        ? 'Select start date'
-                        : '${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
+                    Text(
+                      // Menampilkan instruksi pengisian atau tanggal yang dipilih
+                      _startedAt == null
+                          ? 'Select start date'
+                          : '${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
                     ),
                     ElevatedButton(
-                      onPressed: _selectStartDate, 
+                      onPressed: _selectStartDate,
                       child: const Text('Select Date'),
                     ),
                   ],
@@ -191,13 +194,14 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text( // Menampilkan instruksi pengisian atau tanggal yang dipilih
-                      _endedAt == null 
-                        ? 'Select end date'
-                        : '${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
+                    Text(
+                      // Menampilkan instruksi pengisian atau tanggal yang dipilih
+                      _endedAt == null
+                          ? 'Select end date'
+                          : '${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
                     ),
                     ElevatedButton(
-                      onPressed: _selectEndDate, 
+                      onPressed: _selectEndDate,
                       child: const Text('Select Date'),
                     ),
                   ],
@@ -211,8 +215,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all(Colors.indigo),
+                      backgroundColor: WidgetStateProperty.all(
+                        Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -220,7 +225,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Experience successfully added!'),
+                              title: const Text(
+                                'Experience successfully added!',
+                              ),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,9 +235,15 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                                     Text('Experience: $_experienceName'),
                                     Text('Description: $_description'),
                                     Text('Category: $_category'),
-                                    Text('Started at: ${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}'),
+                                    Text(
+                                      'Started at: ${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
+                                    ),
                                     // Menampilkan teks 'Ongoing' apabila Experience belum memiliki tanggal akhir
-                                    Text(_endedAt == null ? 'Ongoing' : 'Ended at : ${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}'),
+                                    Text(
+                                      _endedAt == null
+                                          ? 'Ongoing'
+                                          : 'Ended at : ${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
+                                    ),
                                   ],
                                 ),
                               ),

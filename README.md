@@ -9,7 +9,7 @@ Kelas : PBP D
 ## Hyperlinks
 1. [Tugas 7](#tugas-7)
 2. [Tugas 8](#tugas-8)
-
+3. [Tutorial 10](#tutorial-10)
 
 ## Tugas 7
 ### Perubahan yang terjadi
@@ -57,3 +57,13 @@ Link chat saya dengan AI: https://gemini.google.com/share/d/1ghl9n1yLB3NMn04Wdn1
 ### Resources
 1. Halaman Tutorial 9 PBP
 2. Dokumentasi Flutter (https://docs.flutter.dev/)
+
+## Tutorial 10
+### Perubahan yang terjadi
+1. Pengintegrasian DRF API untuk model Project ke aplikasi mobile. API digunakan untuk fetching data project dan membuat project baru.
+2. Pengintegrasian DRF API untuk login dan logout.
+
+### AI Disclosure
+Saya menggunakan Gemini AI untuk membantu saya mengerjakan tutorial. Saya menggunakannya untuk membantu saya mengerjakan beberapa TODO, memahami kode, dan mengatasi error. Satu-satunya bagian kode yang di-generate AI yang saya gunakan tanpa modifikasi signifikan adalah kode pada project_detail_screen.dart.
+
+Link chat: https://gemini.google.com/share/d/1cBv2zuk8UW3Fdm0NsnAM2REwbaUkyoUe?usp=sharing
