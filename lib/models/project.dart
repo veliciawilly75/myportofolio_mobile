@@ -24,6 +24,6 @@ class Project {
   final String status;
   final String type;
   final String? link;
-  
+
   Map<String, dynamic> toJson() => _$ProjectToJson(this);
 }

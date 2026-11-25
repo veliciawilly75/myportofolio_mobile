@@ -40,8 +40,7 @@ class ItemCard extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => ProjectFormPage()),
               );
             }
-          }
-          else if (item.name == "Add Experience") {
+          } else if (item.name == "Add Experience") {
             final loggedIn = await ensureLoggedIn(context);
             if (loggedIn) {
               if (!context.mounted) return;
@@ -50,11 +49,9 @@ class ItemCard extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => ExperienceFormPage()),
               );
             }
-          }
-          else if (item.name == "Logout") {
+          } else if (item.name == "Logout") {
             context.read<AuthState>().logout();
-          }
-          else if (item.name == "Login") {
+          } else if (item.name == "Login") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),

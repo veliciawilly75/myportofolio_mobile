@@ -19,7 +19,6 @@ jobs:
       timeout_minutes: 15
 
   build_apk:
-    # TODO: Ensure this job only runs after `build` succeeds (`needs: build`)
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -28,13 +27,9 @@ jobs:
         with:
           channel: stable
           cache: true
-      # TODO: Run `flutter pub get`, `dart run build_runner build --delete-conflicting-outputs`,
       - run: flutter pub get
       - run: dart run build_runner build --delete-conflicting-outputs
       - run: flutter build apk --release --dart-define=API_BASE_URL=http://localhost:8000
-      # and `flutter build apk --release`
-      # TODO: Upload `build/app/outputs/flutter-apk/app-release.apk` as `app-release-apk`
-      # using `actions/upload-artifact@v4`
       - uses: actions/upload-artifact@v4
         with: 
           name: app-release-apk
