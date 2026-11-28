@@ -1,5 +1,10 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/models/experience.dart';
+import 'package:myportofolio_mobile/services/api_client.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
+import 'package:myportofolio_mobile/widgets/auth_guard.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
+import 'package:provider/provider.dart';
 
 class ExperienceFormPage extends StatefulWidget {
   const ExperienceFormPage({super.key});
@@ -19,12 +24,12 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   DateTime? _endedAt;
 
   final List<String> _categories = [
-    'Internship',
-    'Research',
-    'Volunteer',
-    'Part-Time',
-    'Full-Time',
-    'Freelance',
+    'internship',
+    'research',
+    'volunteer',
+    'part-Time',
+    'full-Time',
+    'freelance',
   ];
 
   // === Fungsi untuk date picker ===
@@ -219,46 +224,63 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                         Theme.of(context).colorScheme.primary,
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text(
-                                'Experience successfully added!',
-                              ),
-                              content: SingleChildScrollView(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Experience: $_experienceName'),
-                                    Text('Description: $_description'),
-                                    Text('Category: $_category'),
-                                    Text(
-                                      'Started at: ${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
-                                    ),
-                                    // Menampilkan teks 'Ongoing' apabila Experience belum memiliki tanggal akhir
-                                    Text(
-                                      _endedAt == null
-                                          ? 'Ongoing'
-                                          : 'Ended at : ${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
-                                    ),
-                                  ],
+                        if (await ensureLoggedIn(context)) {
+                          final newExperience = Experience(
+                            title: _experienceName,
+                            description: _description,
+                            category: _category,
+                            startedAt: _startedAt!,
+                            endedAt: _endedAt,
+                          );
+                          if (!context.mounted) return;
+                          String token = context.read<AuthState>().token!;
+                          await context.read<ApiClient>().createExperience(
+                            newExperience,
+                            token: token,
+                          );
+                          if (!context.mounted) return;
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text(
+                                  'Experience successfully added!',
                                 ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    _formKey.currentState!.reset();
-                                  },
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Experience: $_experienceName'),
+                                      Text('Description: $_description'),
+                                      Text('Category: $_category'),
+                                      Text(
+                                        'Started at: ${_startedAt!.year}-${_startedAt!.month}-${_startedAt!.day}',
+                                      ),
+                                      // Menampilkan teks 'Ongoing' apabila Experience belum memiliki tanggal akhir
+                                      Text(
+                                        _endedAt == null
+                                            ? 'Ongoing'
+                                            : 'Ended at : ${_endedAt!.year}-${_endedAt!.month}-${_endedAt!.day}',
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            );
-                          },
-                        );
+                                actions: [
+                                  TextButton(
+                                    child: const Text('OK'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      _formKey.currentState!.reset();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          ); // showDialog
+                        }
                       }
                     },
                     child: const Text(

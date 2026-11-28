@@ -53,7 +53,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_circle_outline),
+            leading: const Icon(Icons.explore_outlined),
             title: const Text('View Projects'),
             // Navigasi ke halaman lihat proyek
             onTap: () {
@@ -64,7 +64,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.add_circle_outline),
+            leading: const Icon(Icons.explore_outlined),
             title: const Text('View Experiences'),
             // Navigasi ke halaman lihat experience
             onTap: () {

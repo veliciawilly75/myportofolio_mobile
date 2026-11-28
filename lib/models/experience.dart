@@ -22,8 +22,8 @@ class Experience {
   final String title;
   final String description;
   final String category;
-  final String startedAt;
-  final String? endedAt;
+  final DateTime startedAt;
+  final DateTime? endedAt;
 
   Map<String, dynamic> toJson() => _$ExperienceToJson(this);
 }
