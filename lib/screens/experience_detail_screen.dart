@@ -36,10 +36,10 @@ class ExperienceDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             _InfoBadge(
-              icon: icons[experience.category]!, 
-              label: experience.category, 
+              icon: icons[experience.category]!,
+              label: experience.category,
               backgroundColor: colorScheme.primaryContainer,
-                  foregroundColor: colorScheme.onPrimaryContainer,
+              foregroundColor: colorScheme.onPrimaryContainer,
             ),
             const SizedBox(height: 24),
 
