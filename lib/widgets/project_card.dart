@@ -1,8 +1,10 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/screens/experience_list_screens.dart';
 import 'package:myportofolio_mobile/screens/login_screen.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/screens/experience_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
+import 'package:myportofolio_mobile/screens/project_list_screens.dart';
 import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:myportofolio_mobile/widgets/auth_guard.dart';
 import 'package:provider/provider.dart';
@@ -55,6 +57,16 @@ class ItemCard extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => LoginScreen()),
+            );
+          } else if (item.name == "View Projects") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProjectListScreen()),
+            );
+          } else if (item.name == "View Experiences") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ExperienceListScreen()),
             );
           }
         },

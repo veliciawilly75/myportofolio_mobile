@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/screens/experience_list_screens.dart';
 import 'package:myportofolio_mobile/screens/login_screen.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
@@ -54,11 +55,22 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.add_circle_outline),
             title: const Text('View Projects'),
-            // Navigasi ke halaman tambah proyek
+            // Navigasi ke halaman lihat proyek
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ProjectListScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_circle_outline),
+            title: const Text('View Experiences'),
+            // Navigasi ke halaman lihat experience
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExperienceListScreen()),
               );
             },
           ),

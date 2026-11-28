@@ -12,7 +12,8 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP D";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("View Project", Icons.folder, Color(0xFF4A84BA)),
+    ItemHomepage("View Projects", Icons.folder, Color(0xFF4A84BA)),
+    ItemHomepage("View Experiences", Icons.folder, Color(0xFF4A84BA)),
     ItemHomepage("Add Project", Icons.add_circle, Color(0xFF2F855A)),
     ItemHomepage("Add Experience", Icons.add_circle, Color(0xFF2F855A)),
   ];
@@ -23,12 +24,12 @@ class MyHomePage extends StatelessWidget {
     // Scaffold menyediakan struktur visual dasar halaman (AppBar, Body, SnackBar).
     final loggedIn = context.watch<AuthState>().isLoggedIn;
     if (loggedIn) {
-      if (items.length == 4) {
+      if (items.length == 5) {
         items.removeLast();
       }
       items.add(ItemHomepage("Logout", Icons.logout, Color(0xFFD97777)));
     } else {
-      if (items.length == 4) {
+      if (items.length == 5) {
         items.removeLast();
       }
       items.add(ItemHomepage("Login", Icons.login, Color(0xFF4A84BA)));
