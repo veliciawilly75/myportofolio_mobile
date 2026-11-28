@@ -1,3 +1,5 @@
+[![CI](https://github.com/veliciawilly75/myportofolio_mobile/actions/workflows/main.yaml/badge.svg)](https://github.com/veliciawilly75/myportofolio_mobile/actions/workflows/main.yaml)
+
 # Portofolio versi Mobile
 
 Nama : Velicia Willy
@@ -6,10 +8,21 @@ NPM : 2506657384
 
 Kelas : PBP D
 
+## Instruksi setup untuk menjalankan aplikasi via chrome:
+1. Jalankan ```flutter pub get``` untuk mengunduh dependensi yang dibutuhkan aplikasi.
+2. Jalankan ```dart run build_runner build --delete-conflicting-outputs``` di terminal.
+3. Jalankan ```flutter run -d chrome --dart-define=API_BASE_URL=https://velicia-willy-myportofolio.pws.cs.ui.ac.id/``` atau ```flutter run -d chrome --dart-define=API_BASE_URL=http://localhost:8000``` jika menjalankan website secara lokal.
+
+Link Website = https://velicia-willy-myportofolio.pws.cs.ui.ac.id/
+
+Link repository django = https://github.com/veliciawilly75/myportofolio
+
+
 ## Hyperlinks
 1. [Tugas 7](#tugas-7)
 2. [Tugas 8](#tugas-8)
 3. [Tutorial 10](#tutorial-10)
+4. [Tugas 9](#tugas-9)
 
 ## Tugas 7
 ### Perubahan yang terjadi
@@ -67,3 +80,19 @@ Link chat saya dengan AI: https://gemini.google.com/share/d/1ghl9n1yLB3NMn04Wdn1
 Saya menggunakan Gemini AI untuk membantu saya mengerjakan tutorial. Saya menggunakannya untuk membantu saya mengerjakan beberapa TODO, memahami kode, dan mengatasi error. Satu-satunya bagian kode yang di-generate AI yang saya gunakan tanpa modifikasi signifikan adalah kode pada project_detail_screen.dart.
 
 Link chat: https://gemini.google.com/share/d/1cBv2zuk8UW3Fdm0NsnAM2REwbaUkyoUe?usp=sharing
+
+
+## Tugas 9
+### Perubahan yang terjadi
+1. 
+
+### Pertanyaan Reflektif
+1. 
+2. 
+3. 
+4. 
+
+### AI Disclosure
+
+
+### Resources
